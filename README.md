@@ -188,3 +188,8 @@ ADMIN
 - 학원 운영의 표준화
 
 </details>
+
+<details>
+<summary><b><h2>7. ERD</b></summary>
+https://www.erdcloud.com/d/Rr2AjnfmAGMGRGuNo
+</details>
