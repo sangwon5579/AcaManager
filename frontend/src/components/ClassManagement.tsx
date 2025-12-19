@@ -1,5 +1,34 @@
-import { useState } from 'react';
-import { Plus, Users, Calendar, MapPin, Edit, Eye, Clock } from 'lucide-react';
+"use client";
+
+import { useState } from "react";
+import {
+  Plus,
+  Users,
+  Calendar,
+  MapPin,
+  Edit,
+  Eye,
+  Clock,
+} from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableHeader,
+  TableHead,
+  TableRow,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import { Progress } from "@/components/ui/progress";
 
 type Class = {
   id: string;
@@ -10,7 +39,7 @@ type Class = {
   room: string;
   studentCount: number;
   maxStudents: number;
-  status: '진행중' | '마감' | '준비중';
+  status: "진행중" | "마감" | "준비중";
 };
 
 export function ClassManagement() {
@@ -18,66 +47,65 @@ export function ClassManagement() {
 
   const classes: Class[] = [
     {
-      id: 'C001',
-      name: '수학 심화반',
-      subject: '수학',
-      teacher: '김선생님',
-      schedule: ['월 19:00-21:00', '수 19:00-21:00', '금 19:00-21:00'],
-      room: '301호',
+      id: "C001",
+      name: "수학 심화반",
+      subject: "수학",
+      teacher: "김선생님",
+      schedule: ["월 19:00-21:00", "수 19:00-21:00", "금 19:00-21:00"],
+      room: "301호",
       studentCount: 15,
       maxStudents: 15,
-      status: '마감',
+      status: "마감",
     },
     {
-      id: 'C002',
-      name: '영어 중급반',
-      subject: '영어',
-      teacher: '이선생님',
-      schedule: ['화 18:00-20:00', '목 18:00-20:00'],
-      room: '201호',
+      id: "C002",
+      name: "영어 중급반",
+      subject: "영어",
+      teacher: "이선생님",
+      schedule: ["화 18:00-20:00", "목 18:00-20:00"],
+      room: "201호",
       studentCount: 12,
       maxStudents: 15,
-      status: '진행중',
+      status: "진행중",
     },
     {
-      id: 'C003',
-      name: '국어 기본반',
-      subject: '국어',
-      teacher: '박선생님',
-      schedule: ['월 17:00-19:00', '목 17:00-19:00'],
-      room: '202호',
+      id: "C003",
+      name: "국어 기본반",
+      subject: "국어",
+      teacher: "박선생님",
+      schedule: ["월 17:00-19:00", "목 17:00-19:00"],
+      room: "202호",
       studentCount: 10,
       maxStudents: 12,
-      status: '진행중',
-    },
-    {
-      id: 'C004',
-      name: '영어 고급반',
-      subject: '영어',
-      teacher: '이선생님',
-      schedule: ['화 20:00-22:00', '목 20:00-22:00'],
-      room: '201호',
-      studentCount: 8,
-      maxStudents: 10,
-      status: '진행중',
-    },
-    {
-      id: 'C005',
-      name: '수학 최상반',
-      subject: '수학',
-      teacher: '정선생님',
-      schedule: ['수 20:00-22:00', '토 14:00-17:00'],
-      room: '302호',
-      studentCount: 0,
-      maxStudents: 12,
-      status: '준비중',
+      status: "진행중",
     },
   ];
 
   const classStudents = [
-    { id: 'S001', name: '김민준', school: '대치고', grade: '고2', attendance: '100%', avgScore: 92 },
-    { id: 'S004', name: '최수아', school: '세화고', grade: '고2', attendance: '100%', avgScore: 95 },
-    { id: 'S007', name: '윤하은', school: '대치고', grade: '고2', attendance: '100%', avgScore: 91 },
+    {
+      id: "S001",
+      name: "김민준",
+      school: "대치고",
+      grade: "고2",
+      attendance: 100,
+      avgScore: 92,
+    },
+    {
+      id: "S004",
+      name: "최수아",
+      school: "세화고",
+      grade: "고2",
+      attendance: 100,
+      avgScore: 95,
+    },
+    {
+      id: "S007",
+      name: "윤하은",
+      school: "대치고",
+      grade: "고2",
+      attendance: 100,
+      avgScore: 91,
+    },
   ];
 
   return (
@@ -85,256 +113,190 @@ export function ClassManagement() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2>수업 / 반 관리</h2>
-          <p className="text-gray-600 mt-1">전체 {classes.length}개 반 운영 중</p>
+          <h2 className="text-xl font-semibold">수업 / 반 관리</h2>
+          <p className="text-sm text-muted-foreground">
+            전체 {classes.length}개 반 운영 중
+          </p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-          <Plus className="w-4 h-4" />
+        <Button>
+          <Plus className="mr-2 size-4" />
           신규 반 개설
-        </button>
+        </Button>
       </div>
 
-      {/* Class List */}
+      {/* Class Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {classes.map((cls) => (
-          <div key={cls.id} className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="mb-1">{cls.name}</h3>
-                <p className="text-sm text-gray-600">{cls.subject}</p>
-              </div>
-              <span className={`px-3 py-1 rounded-full text-sm ${
-                cls.status === '마감' ? 'bg-red-100 text-red-700' :
-                cls.status === '진행중' ? 'bg-green-100 text-green-700' :
-                'bg-gray-100 text-gray-700'
-              }`}>
-                {cls.status}
-              </span>
-            </div>
+        {classes.map((cls) => {
+          const rate = (cls.studentCount / cls.maxStudents) * 100;
 
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Users className="w-4 h-4" />
-                <span>담당: {cls.teacher}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <MapPin className="w-4 h-4" />
-                <span>{cls.room}</span>
-              </div>
-              <div className="flex items-start gap-2 text-sm text-gray-600">
-                <Clock className="w-4 h-4 mt-0.5" />
-                <div className="flex-1">
-                  {cls.schedule.map((time, idx) => (
-                    <div key={idx}>{time}</div>
-                  ))}
+          return (
+            <Card key={cls.id} className="hover:shadow-md transition">
+              <CardHeader className="flex flex-row items-start justify-between">
+                <div>
+                  <CardTitle className="text-base">{cls.name}</CardTitle>
+                  <CardDescription>{cls.subject}</CardDescription>
                 </div>
-              </div>
-            </div>
+                <Badge
+                  variant={
+                    cls.status === "마감"
+                      ? "destructive"
+                      : cls.status === "진행중"
+                      ? "default"
+                      : "secondary"
+                  }
+                >
+                  {cls.status}
+                </Badge>
+              </CardHeader>
 
-            <div className="mb-4">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-gray-600">수강 인원</span>
-                <span>{cls.studentCount} / {cls.maxStudents}명</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className={`h-2 rounded-full ${
-                    cls.studentCount >= cls.maxStudents ? 'bg-red-600' : 'bg-blue-600'
-                  }`}
-                  style={{ width: `${(cls.studentCount / cls.maxStudents) * 100}%` }}
-                />
-              </div>
-            </div>
+              <CardContent className="space-y-4">
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Users className="size-4" />
+                    담당: {cls.teacher}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="size-4" />
+                    {cls.room}
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Clock className="size-4 mt-0.5" />
+                    <div>
+                      {cls.schedule.map((t, i) => (
+                        <div key={i}>{t}</div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-            <div className="flex gap-2">
-              <button
-                onClick={() => setSelectedClass(cls)}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-              >
-                <Eye className="w-4 h-4" />
-                상세보기
-              </button>
-              <button className="flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">
-                <Edit className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        ))}
+                <div>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>수강 인원</span>
+                    <span>
+                      {cls.studentCount}/{cls.maxStudents}명
+                    </span>
+                  </div>
+                  <Progress value={rate} />
+                </div>
+
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="flex-1"
+                    onClick={() => setSelectedClass(cls)}
+                  >
+                    <Eye className="mr-2 size-4" />
+                    상세보기
+                  </Button>
+                  <Button variant="outline" size="icon">
+                    <Edit className="size-4" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       {/* Selected Class Detail */}
       {selectedClass && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3>{selectedClass.name} - 학생 구성</h3>
-            <button
-              onClick={() => setSelectedClass(null)}
-              className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
-            >
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>{selectedClass.name} 학생 구성</CardTitle>
+              <CardDescription>{selectedClass.teacher}</CardDescription>
+            </div>
+            <Button variant="ghost" onClick={() => setSelectedClass(null)}>
               닫기
-            </button>
-          </div>
+            </Button>
+          </CardHeader>
 
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50 border-b border-gray-200">
-                <tr>
-                  <th className="text-left py-3 px-4 text-gray-600">학생 ID</th>
-                  <th className="text-left py-3 px-4 text-gray-600">이름</th>
-                  <th className="text-left py-3 px-4 text-gray-600">학교 / 학년</th>
-                  <th className="text-left py-3 px-4 text-gray-600">출석률</th>
-                  <th className="text-left py-3 px-4 text-gray-600">평균 점수</th>
-                  <th className="text-left py-3 px-4 text-gray-600">관리</th>
-                </tr>
-              </thead>
-              <tbody>
-                {classStudents.map((student) => (
-                  <tr key={student.id} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-4 text-gray-600">{student.id}</td>
-                    <td className="py-3 px-4">{student.name}</td>
-                    <td className="py-3 px-4">
-                      <div>{student.school}</div>
-                      <div className="text-sm text-gray-500">{student.grade}</div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-16 bg-gray-200 rounded-full h-2">
-                          <div
-                            className="bg-green-600 h-2 rounded-full"
-                            style={{ width: student.attendance }}
-                          />
-                        </div>
-                        <span className="text-sm">{student.attendance}</span>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>학생 ID</TableHead>
+                  <TableHead>이름</TableHead>
+                  <TableHead>학교 / 학년</TableHead>
+                  <TableHead>출석률</TableHead>
+                  <TableHead>평균 점수</TableHead>
+                  <TableHead>관리</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {classStudents.map((s) => (
+                  <TableRow key={s.id}>
+                    <TableCell>{s.id}</TableCell>
+                    <TableCell>{s.name}</TableCell>
+                    <TableCell>
+                      <div>{s.school}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {s.grade}
                       </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded text-sm">
-                        {student.avgScore}점
-                      </span>
-                    </td>
-                    <td className="py-3 px-4">
-                      <button className="text-blue-600 hover:underline text-sm">
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center gap-2">
+                        <Progress value={s.attendance} className="w-20" />
+                        <span className="text-sm">{s.attendance}%</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant="secondary">{s.avgScore}점</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Button variant="link" size="sm">
                         상세보기
-                      </button>
-                    </td>
-                  </tr>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
       )}
 
-      {/* Weekly Schedule Overview */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
-        <h3 className="mb-4 flex items-center gap-2">
-          <Calendar className="w-5 h-5 text-blue-600" />
-          주간 수업 시간표
-        </h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-gray-200">
-                <th className="text-left py-3 px-4 text-gray-600 bg-gray-50">시간</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">월</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">화</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">수</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">목</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">금</th>
-                <th className="text-center py-3 px-4 text-gray-600 bg-gray-50">토</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-100">
-                <td className="py-3 px-4 text-gray-600">17:00-19:00</td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-blue-50 p-2 rounded border border-blue-200">
-                    <div className="text-sm">국어 기본반</div>
-                    <div className="text-xs text-gray-600">202호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-blue-50 p-2 rounded border border-blue-200">
-                    <div className="text-sm">국어 기본반</div>
-                    <div className="text-xs text-gray-600">202호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4"></td>
-              </tr>
-              <tr className="border-b border-gray-100">
-                <td className="py-3 px-4 text-gray-600">18:00-20:00</td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-green-50 p-2 rounded border border-green-200">
-                    <div className="text-sm">영어 중급반</div>
-                    <div className="text-xs text-gray-600">201호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-green-50 p-2 rounded border border-green-200">
-                    <div className="text-sm">영어 중급반</div>
-                    <div className="text-xs text-gray-600">201호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4"></td>
-              </tr>
-              <tr className="border-b border-gray-100">
-                <td className="py-3 px-4 text-gray-600">19:00-21:00</td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-purple-50 p-2 rounded border border-purple-200">
-                    <div className="text-sm">수학 심화반</div>
-                    <div className="text-xs text-gray-600">301호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-purple-50 p-2 rounded border border-purple-200">
-                    <div className="text-sm">수학 심화반</div>
-                    <div className="text-xs text-gray-600">301호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-purple-50 p-2 rounded border border-purple-200">
-                    <div className="text-sm">수학 심화반</div>
-                    <div className="text-xs text-gray-600">301호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-              </tr>
-              <tr className="border-b border-gray-100">
-                <td className="py-3 px-4 text-gray-600">20:00-22:00</td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-green-50 p-2 rounded border border-green-200">
-                    <div className="text-sm">영어 고급반</div>
-                    <div className="text-xs text-gray-600">201호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-purple-50 p-2 rounded border border-purple-200">
-                    <div className="text-sm">수학 최상반</div>
-                    <div className="text-xs text-gray-600">302호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4 text-center">
-                  <div className="bg-green-50 p-2 rounded border border-green-200">
-                    <div className="text-sm">영어 고급반</div>
-                    <div className="text-xs text-gray-600">201호</div>
-                  </div>
-                </td>
-                <td className="py-3 px-4"></td>
-                <td className="py-3 px-4"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      {/* Weekly Schedule */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Calendar className="size-5" />
+            주간 수업 시간표
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>시간</TableHead>
+                <TableHead className="text-center">월</TableHead>
+                <TableHead className="text-center">화</TableHead>
+                <TableHead className="text-center">수</TableHead>
+                <TableHead className="text-center">목</TableHead>
+                <TableHead className="text-center">금</TableHead>
+                <TableHead className="text-center">토</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>19:00-21:00</TableCell>
+                <TableCell className="text-center">
+                  <Badge>수학 심화반</Badge>
+                </TableCell>
+                <TableCell />
+                <TableCell className="text-center">
+                  <Badge>수학 심화반</Badge>
+                </TableCell>
+                <TableCell />
+                <TableCell className="text-center">
+                  <Badge>수학 심화반</Badge>
+                </TableCell>
+                <TableCell />
+              </TableRow>
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 }

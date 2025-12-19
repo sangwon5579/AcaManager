@@ -124,15 +124,17 @@
 
 @layer base {
   * {
-    @apply border-gray-200;
+    @apply border-border;
   }
 
   body {
-    @apply bg-white text-gray-900 min-h-screen w-full;
+    @apply bg-background text-foreground min-h-screen w-full;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+
 
 /**
  * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
