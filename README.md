@@ -195,7 +195,23 @@ ADMIN
 </details>
 
 <details>
-<summary><b><h2>8. ERD</b></summary>
+<summary><b><h2>8. 기술 스택</b></summary>
+
+
+
+</details>
+
+<details>
+<summary><b><h2>9. 시스템 아키텍처</b></summary>
+  
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a1432409-f226-4ff6-9a86-412cae2a938b" />
+
+
+
+</details>
+
+<details>
+<summary><b><h2>10. ERD</b></summary>
   
 [ERD](https://www.erdcloud.com/d/Rr2AjnfmAGMGRGuNo)
 <img width="4190" height="2872" alt="AcaManager (3)" src="https://github.com/user-attachments/assets/c490594b-11d1-4793-a7fe-8d7915e93e7d" />
@@ -204,7 +220,7 @@ ADMIN
 </details>
 
 <details>
-<summary><b><h2>9. 화면 설계서</b></summary>
+<summary><b><h2>11. 화면 설계서</b></summary>
   
 [화면 설계서](https://graph-crate-93709241.figma.site/)
 
@@ -213,7 +229,7 @@ ADMIN
 
   
 <details>
-<summary><b><h2>10. 기대 효과</b></summary>
+<summary><b><h2>12. 기대 효과</b></summary>
 
 - 관리자 / 교사의 행정 업무 감소
 - 학부모 만족도 및 신뢰도 향상
