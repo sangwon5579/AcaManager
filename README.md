@@ -203,10 +203,17 @@ ADMIN
 
 </details>
 
+<details>
+<summary><b><h2>9. 화면 설계서</b></summary>
+  
+[화면 설계서](https://graph-crate-93709241.figma.site/)
+
+</details>
+
 
   
 <details>
-<summary><b><h2>9. 기대 효과</b></summary>
+<summary><b><h2>10. 기대 효과</b></summary>
 
 - 관리자 / 교사의 행정 업무 감소
 - 학부모 만족도 및 신뢰도 향상
