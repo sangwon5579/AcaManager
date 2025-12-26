@@ -71,16 +71,32 @@ ADMIN
 └ MASTER_TEACHER  
 └ TEACHER  
 └ SUB_TEACHER  
-└ STUDENT  
-└ PARENT  
+
+
+</details>
+
+<details>
+<summary><b><h2>4. WBS</b></summary>
+    
+[WBS](https://docs.google.com/spreadsheets/d/13bBhfvNyAx6Vv0_oIb2T18Mjv9yCGqABUHgHX-24H8c/edit?gid=0#gid=0)
+
+
+</details>
+
+<details>
+<summary><b><h2>5. 요구사항 명세서</b></summary>
+    
+[요구사항 명세서](https://docs.google.com/spreadsheets/d/1AxbfO2X1UeemGQjrTqY9xi-pELPIFQw9JddZeZI_EAY/edit?gid=0#gid=0)
+<img width="1346" height="1093" alt="image" src="https://github.com/user-attachments/assets/f30b894e-7c73-4717-845a-58ff8d4213c3" />
+
 
 </details>
 
 
 <details>
-<summary><b><h2>4. 주요 기능 상세</b></summary>
+<summary><b><h2>6. 주요 기능 상세</b></summary>
 
-### 4.1 학생 관리 기능 (핵심 도메인)
+### 6.1 학생 관리 기능 (핵심 도메인)
 
 **관리 항목**
 - 기본 정보: 이름, 학교명
@@ -98,7 +114,7 @@ ADMIN
 - 전원 / 퇴원 후에도 데이터 보존
 
 
-### 4.2 수업 및 출결 관리
+### 6.2 수업 및 출결 관리
 
 **수업 관리**
 - 강좌 / 반 생성
@@ -111,7 +127,7 @@ ADMIN
 - 보강 영상 시청 여부 기록
 
 
-### 4.3 과제 및 테스트 관리
+### 6.3 과제 및 테스트 관리
 
 **과제**
 - 수업별 과제 등록
@@ -123,7 +139,7 @@ ADMIN
 - 주간 학습 리포트 자동 반영
 
 
-### 4.4 학부모 커뮤니케이션 (핵심 가치)
+### 6.4 학부모 커뮤니케이션 (핵심 가치)
 
 - 주간 학습 리포트 자동 발송
 - 출결 + 과제 + 테스트 데이터 기반
@@ -136,7 +152,7 @@ ADMIN
 - 결석 / 보강 안내
 - 공지사항
 
-### 4.5 조교 근무 및 급여 관리
+### 6.5 조교 근무 및 급여 관리
 
 **근무 시간 관리**
 - SUB_TEACHER 직접 입력
@@ -148,7 +164,7 @@ ADMIN
 - 급여 지급 여부 관리
 
 
-### 4.6 내부 채팅 기능
+### 6.6 내부 채팅 기능
 
 **목적**
 - TEACHER ↔ SUB_TEACHER 간 업무 커뮤니케이션
@@ -161,26 +177,36 @@ ADMIN
 
 
 <details>
-<summary><b><h2>5. 비기능 요구사항</b></summary>
+<summary><b><h2>7. 비기능 요구사항</b></summary>
 
-### 5.1 보안
+### 7.1 보안
 - JWT 기반 인증
 - Role 기반 접근 제어
 - 민감 정보 암호화
 
-### 5.2 안정성
+### 7.2 안정성
 - 메시지 발송 실패 이력 관리
 - Soft Delete 기반 데이터 보존
 
-### 5.3 확장성
+### 7.3 확장성
 - STUDENT / PARENT 기능 확장 가능
 - 모바일 앱 연동 고려
 
 </details>
 
-
 <details>
-<summary><b><h2>6. 기대 효과</b></summary>
+<summary><b><h2>8. ERD</b></summary>
+  
+[ERD](https://www.erdcloud.com/d/Rr2AjnfmAGMGRGuNo)
+<img width="4190" height="2872" alt="AcaManager (3)" src="https://github.com/user-attachments/assets/c490594b-11d1-4793-a7fe-8d7915e93e7d" />
+
+
+</details>
+
+
+  
+<details>
+<summary><b><h2>9. 기대 효과</b></summary>
 
 - 관리자 / 교사의 행정 업무 감소
 - 학부모 만족도 및 신뢰도 향상
@@ -189,7 +215,4 @@ ADMIN
 
 </details>
 
-<details>
-<summary><b><h2>7. ERD</b></summary>
-https://www.erdcloud.com/d/Rr2AjnfmAGMGRGuNo
-</details>
+
