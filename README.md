@@ -275,7 +275,7 @@ ADMIN
 <details>
 <summary><b><h2>11. API 명세서</b></summary>
   
-[ERD](m8f9vwtzq0.apidog.io)
+[API 명세서](https://m8f9vwtzq0.apidog.io)
 
 </details>
 
