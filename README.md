@@ -270,8 +270,17 @@ ADMIN
 
 </details>
 
+</details>
+
 <details>
-<summary><b><h2>11. 화면 설계서</b></summary>
+<summary><b><h2>11. API 명세서</b></summary>
+  
+[ERD](m8f9vwtzq0.apidog.io)
+
+</details>
+
+<details>
+<summary><b><h2>12. 화면 설계서</b></summary>
   
 [화면 설계서](https://graph-crate-93709241.figma.site/)
 
@@ -280,7 +289,7 @@ ADMIN
 
   
 <details>
-<summary><b><h2>12. 기대 효과</b></summary>
+<summary><b><h2>13. 기대 효과</b></summary>
 
 - 관리자 / 교사의 행정 업무 감소
 - 학부모 만족도 및 신뢰도 향상
